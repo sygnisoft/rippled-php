@@ -172,6 +172,23 @@ class Transaction
         return $res;
     }
 
+    public function submitWithPassphrase(string $passphrase, string $keyType = 'secp256k1')
+    {
+        if ($this->getClient() === null) {
+            throw new TransactionException('Transaction must have a Client to submit');
+        }
+
+        $res = null;
+        // Submit unsigned transaction with passphrase.
+        $res = $this->getClient()->send('submit', [
+            'tx_json' => $this->getTx(),
+            'passphrase' => $passphrase,
+            'key_type' => $keyType,
+        ]);
+
+        return $res;
+    }
+
     /**
      * @return string
      */
