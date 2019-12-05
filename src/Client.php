@@ -105,22 +105,22 @@ class Client
 
     /**
      * @param string $methodName
-     * @param array $params
+     * @param array $params|null
      * @return Request
      * @throws \Exception
      */
-    public function request(string $methodName, array $params): Request
+    public function request(string $methodName, array $params = null): Request
     {
         return new Request($methodName, $params, $this);
     }
 
     /**
      * @param string $methodName
-     * @param array $params
+     * @param array $params|null
      * @return Response
      * @throws \Exception
      */
-    public function send(string $methodName, array $params = []): Response
+    public function send(string $methodName, array $params = null): Response
     {
         return $this->request($methodName, $params)->send();
     }

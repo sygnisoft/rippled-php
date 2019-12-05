@@ -21,11 +21,11 @@ class Request
     /**
      * Request constructor.
      * @param string $methodName
-     * @param array $params
+     * @param array $params|null
      * @param Client|null $client
      * @throws \Exception
      */
-    public function __construct(string $methodName, array $params, Client $client = null)
+    public function __construct(string $methodName, array $params = null, Client $client = null)
     {
         $this->setMethod($methodName, $params);
 
